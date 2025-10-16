@@ -1,30 +1,30 @@
 # ApexArcade Test Project
 
 ## Gameplay
-- **PlayerController**: рухає вліво/вправо, стрибок через `GroundChecker`.
-- **Collectible**: предмети збираються, додають очки, зникають через анімацію `Disappear`.
-- **ScoreCounter / ScoreCounterUI**: відображають кількість зібраних предметів.
+- **PlayerController**: moves left/right, jumps using `GroundChecker`.
+- **Collectible**: items can be collected, add points, disappear with `Disappear` animation.
+- **ScoreCounter / ScoreCounterUI**: shows how many items collected.
 
 ## Unique Feature
-- **ScreenShaker**: трясіння камери при зіткненні гравця із землею.
-- Інтенсивність залежить від швидкості гравця.
-- Використані:
-  - `AnimationCurve` для плавності
+- **ScreenShaker**: camera shakes when player hits the ground.
+- Intensity depends on player speed.
+- Uses:
+  - `AnimationCurve` for smooth shake
   - `FixedUpdate` + `Vector3.MoveTowards`
   - `Transform.localPosition`
 
 ## UI Flow
 - **MenuController / InGameUIController**:
-  - Кнопки Play / Quit
-  - Fade-in / Fade-out через `ScreenFader` + Animator
+  - Play / Quit buttons
+  - Fade-in / Fade-out via `ScreenFader` + Animator
   - Background Image + Title
 - **ScreenFader**:
-  - Виконує подію після закінчення анімації (fade out)
-  - Працює через Animator, без впливу на фізику або Input
+  - Executes an action after fade out finishes
+  - Works via Animator, does not block physics or input
 
-## Компоненти
-- `Rigidbody` – фізика гравця
-- `Collider / Trigger` – для предметів
-- `Animator` – анімації Collectible та ScreenFader
-- `CanvasGroup / UI Image / Text` – меню і UI
-- `Input` – керування гравцем
+## Components
+- `Rigidbody` – player physics
+- `Collider / Trigger` – collectibles
+- `Animator` – Collectible disappear + ScreenFader animations
+- `CanvasGroup / UI Image / Text` – menu and UI
+- `Input` – player control
